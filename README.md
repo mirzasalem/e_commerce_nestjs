@@ -100,8 +100,8 @@ src/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/mirzasalem/nestjs_project.git
-cd ecommerce-backend
+git clone https://github.com/mirzasalem/e_commerce_nestjs.git
+cd e_commerce_nestjs
 ```
 
 ### 2. Install dependencies
