@@ -1,6 +1,3 @@
-Readme · MD
-Copy
-
 # 🛒 E-Commerce REST API
  
 A fully-featured e-commerce backend built with **NestJS**, **TypeORM**, and **MySQL**. This API supports authentication, role-based access control, product management, cart operations, and order processing with full business logic and data consistency.
