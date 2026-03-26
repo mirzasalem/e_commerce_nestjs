@@ -31,4 +31,9 @@ export class Order {
 
   @UpdateDateColumn()
   updatedAt: Date;
+  @Column({ default: 0 })
+  cancelCount: number;
+
+  @Column({ default: false })
+  isBlocked: boolean;
 }

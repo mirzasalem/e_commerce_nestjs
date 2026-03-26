@@ -176,8 +176,17 @@ export class OrdersService {
 
       order.status = OrderStatus.CANCELLED;
       await manager.save(Order, order);
+      // Increment cancellation count and block user if needed
+      await this.usersService.incrementCancellationCount(userId);
 
-      return { message: 'Order cancelled and stock restored successfully' };
+      const updatedUser = await this.usersService.findById(userId);
+      if (!updatedUser) throw new NotFoundException('User not found after update');
+
+      return {
+      message: updatedUser.isFlagged
+        ? 'Order cancelled. You have reached the cancellation limit and are now blocked.'
+        : 'Order cancelled successfully',
+        };
     });
   }
 }
