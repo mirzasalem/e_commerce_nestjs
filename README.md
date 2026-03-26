@@ -1,22 +1,36 @@
+Readme · MD
+Copy
+
 # 🛒 E-Commerce REST API
-
+ 
 A fully-featured e-commerce backend built with **NestJS**, **TypeORM**, and **MySQL**. This API supports authentication, role-based access control, product management, cart operations, and order processing with full business logic and data consistency.
-
+ 
 ---
-
+ 
+## 🌐 Live Demo
+ 
+| | URL |
+|---|---|
+| 🚀 **Base API** | https://mirzasalem-ecommerce.up.railway.app/api |
+| 📖 **Swagger Docs** | https://mirzasalem-ecommerce.up.railway.app/api/docs |
+ 
+> Deployed on **Railway** with a managed **MySQL** database.
+ 
+---
+ 
 ## 🚀 Tech Stack
-
+ 
 - **Framework**: NestJS
 - **Database**: MySQL
 - **ORM**: TypeORM
 - **Authentication**: JWT (JSON Web Tokens)
 - **Validation**: class-validator & class-transformer
 - **API Docs**: Swagger UI
-
+ 
 ---
-
+ 
 ## ✨ Features
-
+ 
 - ✅ User Registration & Login with JWT
 - ✅ Role-based Access Control (Admin / Customer)
 - ✅ Product & Category Management (Admin only)
@@ -31,11 +45,11 @@ A fully-featured e-commerce backend built with **NestJS**, **TypeORM**, and **My
 - ✅ Database transactions for data integrity
 - ✅ Input validation & error handling
 - ✅ Swagger API documentation
-
+ 
 ---
-
+ 
 ## 📁 Project Structure
-
+ 
 ```
 src/
 ├── auth/                   # JWT auth, guards, decorators
@@ -88,27 +102,27 @@ src/
 ├── app.module.ts
 └── main.ts
 ```
-
+ 
 ---
-
+ 
 ## ⚙️ Installation & Setup
-
+ 
 ### Prerequisites
 - Node.js (v18+)
 - MySQL
 - npm
-
+ 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/mirzasalem/e_commerce_nestjs.git
-cd e_commerce_nestjs
+git clone https://github.com/your-username/ecommerce-backend.git
+cd ecommerce-backend
 ```
-
+ 
 ### 2. Install dependencies
 ```bash
 npm install
 ```
-
+ 
 ### 3. Configure environment variables
 Create a `.env` file in the root directory:
 ```env
@@ -118,63 +132,63 @@ DB_PORT=3306
 DB_USERNAME=root
 DB_PASSWORD=your_mysql_password
 DB_NAME=ecommerce
-
+ 
 # JWT
 JWT_SECRET=your_super_secret_jwt_key_here
 JWT_EXPIRES_IN=7d
-
+ 
 # App
 PORT=3000
 ```
-
+ 
 ### 4. Create MySQL database
 ```sql
 CREATE DATABASE ecommerce;
 ```
-
+ 
 ### 5. Run the application
 ```bash
 # Development
 npm run start:dev
-
+ 
 # Production
 npm run build
 npm run start:prod
 ```
-
+ 
 The server will start at `http://localhost:3000/api` 🚀
-
+ 
 ---
-
+ 
 ## 📖 API Documentation
-
+ 
 Swagger UI is available at:
 ```
 http://localhost:3000/api/docs
 ```
-
+ 
 ---
-
+ 
 ## 🔐 Authentication
-
+ 
 This API uses **JWT Bearer Token** authentication.
-
+ 
 1. Register or login to get a token
 2. Include the token in the `Authorization` header:
 ```
 Authorization: Bearer <your_token>
 ```
-
+ 
 ---
-
+ 
 ## 📡 API Endpoints
-
+ 
 ### 🔑 Auth
 | Method | Endpoint | Access | Description |
 |--------|----------|--------|-------------|
 | POST | `/api/auth/register` | Public | Register a new user |
 | POST | `/api/auth/login` | Public | Login and get JWT token |
-
+ 
 ### 📦 Products
 | Method | Endpoint | Access | Description |
 |--------|----------|--------|-------------|
@@ -183,7 +197,7 @@ Authorization: Bearer <your_token>
 | POST | `/api/products` | Admin | Create a new product |
 | PATCH | `/api/products/:id` | Admin | Update a product |
 | DELETE | `/api/products/:id` | Admin | Delete a product |
-
+ 
 ### 🗂️ Categories
 | Method | Endpoint | Access | Description |
 |--------|----------|--------|-------------|
@@ -192,14 +206,14 @@ Authorization: Bearer <your_token>
 | POST | `/api/categories` | Admin | Create a new category |
 | PATCH | `/api/categories/:id` | Admin | Update a category |
 | DELETE | `/api/categories/:id` | Admin | Delete a category |
-
+ 
 ### 🛒 Cart
 | Method | Endpoint | Access | Description |
 |--------|----------|--------|-------------|
 | GET | `/api/cart` | Customer | View cart with total |
 | POST | `/api/cart` | Customer | Add product to cart |
 | DELETE | `/api/cart/:id` | Customer | Remove item from cart |
-
+ 
 ### 📋 Orders
 | Method | Endpoint | Access | Description |
 |--------|----------|--------|-------------|
@@ -209,22 +223,22 @@ Authorization: Bearer <your_token>
 | GET | `/api/orders` | Admin | Get all orders |
 | PATCH | `/api/orders/:id/status` | Admin | Update order status |
 | PATCH | `/api/orders/:id/cancel` | Customer | Cancel an order |
-
+ 
 ---
-
+ 
 ## 💡 Usage Examples
-
+ 
 ### Register a Customer
 ```json
 POST /api/auth/register
 {
-  "name": "Mirza Salem",
-  "email": "mirza@example.com",
+  "name": "John Doe",
+  "email": "john@example.com",
   "password": "123456",
   "role": "customer"
 }
 ```
-
+ 
 ### Register an Admin
 ```json
 POST /api/auth/register
@@ -235,7 +249,7 @@ POST /api/auth/register
   "role": "admin"
 }
 ```
-
+ 
 ### Create a Category (Admin)
 ```json
 POST /api/categories
@@ -245,20 +259,20 @@ Authorization: Bearer <admin_token>
   "description": "Electronic products"
 }
 ```
-
+ 
 ### Create a Product (Admin)
 ```json
 POST /api/products
 Authorization: Bearer <admin_token>
 {
-  "name": "Product Name",
-  "description": "description",
+  "name": "iPhone 15",
+  "description": "Latest iPhone",
   "price": 999.99,
   "stock": 10,
   "categoryId": 1
 }
 ```
-
+ 
 ### Add to Cart (Customer)
 ```json
 POST /api/cart
@@ -268,14 +282,14 @@ Authorization: Bearer <customer_token>
   "quantity": 2
 }
 ```
-
+ 
 ### Place Order from Cart (Customer)
 ```json
 POST /api/orders
 Authorization: Bearer <customer_token>
 {}
 ```
-
+ 
 ### Place Order with Specific Items (Customer)
 ```json
 POST /api/orders
@@ -287,7 +301,7 @@ Authorization: Bearer <customer_token>
   ]
 }
 ```
-
+ 
 ### Update Order Status (Admin)
 ```json
 PATCH /api/orders/1/status
@@ -296,11 +310,11 @@ Authorization: Bearer <admin_token>
   "status": "shipped"
 }
 ```
-
+ 
 ---
-
+ 
 ## 🗄️ Database Entities
-
+ 
 ### User
 | Field | Type | Description |
 |-------|------|-------------|
@@ -311,7 +325,7 @@ Authorization: Bearer <admin_token>
 | role | enum | admin / customer |
 | cancellationCount | int | Tracks cancellations |
 | isFlagged | boolean | Fraud flag |
-
+ 
 ### Product
 | Field | Type | Description |
 |-------|------|-------------|
@@ -323,7 +337,7 @@ Authorization: Bearer <admin_token>
 | image | varchar | Image URL |
 | isActive | boolean | Active status |
 | category | relation | ManyToOne → Category |
-
+ 
 ### Order
 | Field | Type | Description |
 |-------|------|-------------|
@@ -332,7 +346,7 @@ Authorization: Bearer <admin_token>
 | items | relation | OneToMany → OrderItem |
 | total | decimal | Calculated total |
 | status | enum | pending / shipped / delivered / cancelled |
-
+ 
 ### OrderItem
 | Field | Type | Description |
 |-------|------|-------------|
@@ -341,11 +355,11 @@ Authorization: Bearer <admin_token>
 | product | relation | ManyToOne → Product |
 | quantity | int | Quantity ordered |
 | price | decimal | Price at time of order |
-
+ 
 ---
-
+ 
 ## 🔒 Business Rules
-
+ 
 - Customers **cannot order more** than available stock
 - Order total is **always calculated on the backend**
 - Stock is **deducted only after** successful order placement
@@ -354,11 +368,11 @@ Authorization: Bearer <admin_token>
 - Stock is **restored automatically** when an order is cancelled
 - Users who cancel **3 or more orders** are flagged for fraud and blocked from further cancellations
 - Database **transactions** ensure data consistency across all order operations
-
+ 
 ---
-
+ 
 ## 👥 Roles & Permissions
-
+ 
 | Feature | Admin | Customer |
 |---------|-------|----------|
 | Register / Login | ✅ | ✅ |
@@ -371,18 +385,19 @@ Authorization: Bearer <admin_token>
 | Place Order | ❌ | ✅ |
 | View Own Orders | ❌ | ✅ |
 | Cancel Own Order | ❌ | ✅ |
-
+ 
 ---
-
+ 
 ## 🛡️ Security
-
+ 
 - Passwords are hashed using **bcryptjs**
 - JWT tokens expire after **7 days**
 - All protected routes require a valid JWT token
 - Role-based guards prevent unauthorized access
 - Input validation on all endpoints
-
+ 
 ---
+ 
 
 ## 👨 Author
 
